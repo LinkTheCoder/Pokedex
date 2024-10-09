@@ -23,13 +23,18 @@ const TeachableMachineComponent = () => {
 
   const startWebcam = async () => {
     try {
-      const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+      const constraints = {
+        video: {
+          facingMode: { exact: 'environment' } // Use the rear camera
+        }
+      };
+      const stream = await navigator.mediaDevices.getUserMedia(constraints);
       if (videoRef.current) {
         videoRef.current.srcObject = stream;
         videoRef.current.play();
       }
     } catch (error) {
-      console.error('Error accessing the webcam:', error);
+      console.error('Error accessing the rear camera:', error);
     }
   };
 
