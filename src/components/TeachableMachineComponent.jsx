@@ -36,6 +36,7 @@ const TeachableMachineComponent = () => {
   const predict = async () => {
     try {
       setLoading(true);
+      setPredictionResult('LOADING. . .'); // Set the text to "LOADING. . ."
 
       const modelURL = 'https://teachablemachine.withgoogle.com/models/zDe1ROvXf/model.json';
       const metadataURL = 'https://teachablemachine.withgoogle.com/models/zDe1ROvXf/metadata.json';
@@ -43,8 +44,11 @@ const TeachableMachineComponent = () => {
       const model = await tmImage.load(modelURL, metadataURL);
       const prediction = await model.predict(videoRef.current);
 
-      const maxProbabilityIndex = prediction.reduce((maxIndex, current, currentIndex, arr) =>
-        current.probability > arr[maxIndex].probability ? currentIndex : maxIndex, 0);
+      const maxProbabilityIndex = prediction.reduce(
+        (maxIndex, current, currentIndex, arr) =>
+          current.probability > arr[maxIndex].probability ? currentIndex : maxIndex,
+        0
+      );
 
       const maxClass = prediction[maxProbabilityIndex].className;
 
@@ -89,7 +93,7 @@ const TeachableMachineComponent = () => {
         </div>
         <div className="bg-white p-8 rounded-lg shadow-md mt-4">
           <p className="text-xl font-bold text-center text-gray-800 uppercase font-press-start">
-            {predictionResult}
+            {loading ? 'LOADING. . .' : predictionResult}
           </p>
         </div>
       </div>
