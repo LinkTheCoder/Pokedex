@@ -1,4 +1,4 @@
-﻿# 🐱 Or 🐶
+﻿# pokedex
  
 Practicing how to use machine learning(ML).<br>
 A image Classification Website using Tensorflow & Teachable Machine.
