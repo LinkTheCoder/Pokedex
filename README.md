@@ -1,6 +1,8 @@
 ﻿# Pokédex
  
-<br><br>
+<img src="https://i.imgur.com/ecPVvru.png" width="30%" />
+
+<br>
   
 > [!NOTE]
 > 
